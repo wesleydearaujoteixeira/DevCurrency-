@@ -18,7 +18,6 @@ function Home() {
                 </button>
             </form>
 
-
             <table>
                 <thead>
                     <tr>
@@ -63,11 +62,9 @@ function Home() {
                         </td>
 
 
-                        <td className={home.tdLabel} data-label="Mudança 24h">
+                        <td className={home.tdProfit} data-label="Mudança 24h">
                             <span> 1.20 </span>
                         </td>
-
-
                     </tr>
                 </tbody>
 
