@@ -1,0 +1,48 @@
+
+
+.container {
+  padding: 0 14px;
+  color: #fff;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.content {
+  background-color: #0f0f0f;
+  margin: 24px auto;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 700px;
+  border-radius: 14px;
+  gap: 30px;
+
+
+}
+
+.Logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+
+.Logo:hover {
+  transform: scale(1.2);
+
+}
+
+.profit {
+  color: #12f98a;
+}
+
+.loss {
+  color: #f91257;
+
+} 

@@ -4,7 +4,7 @@ import { BsSearch } from 'react-icons/bs';
 import { useState, FormEvent, useEffect } from 'react';
 
 
-interface CoinProps {
+export interface CoinProps {
     id: string;
     name: string;
     symbol: string;
@@ -33,12 +33,12 @@ function Home() {
 
     const [input, setInput] = useState<string>("");
     const [data, setData] = useState<CoinProps[]>([]);
-    const [loadCoins, setLoadCoins] = useState(10);
+    const [loadCoins, setLoadCoins] = useState(0);
 
  
 
     const getData = async () => {
-        fetch(`https://api.coincap.io/v2/assets?limit=${loadCoins}&offset=0`)
+        fetch(`https://api.coincap.io/v2/assets?limit=10&offset=${loadCoins}`)
         .then(response => response.json())
         .then((dados: DataProp) => {
 
@@ -56,7 +56,7 @@ function Home() {
                 currency: "USD",
                 notation: "compact"
               
-            })
+            });
 
             const FormatNumbers = coinsData.map((item) => {
             
@@ -72,8 +72,9 @@ function Home() {
             
             });
 
+            const values = [...data, ...FormatNumbers];
 
-            setData(FormatNumbers);
+            setData(values);
 
 
         });
@@ -82,7 +83,7 @@ function Home() {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [loadCoins]);
 
     const navigate = useNavigate();
 
@@ -93,12 +94,18 @@ function Home() {
 
         if(input === "") return;
 
-        navigate(`/detail/${input}`)
+        navigate(`/detail/${input.toLowerCase()}`)
 
     }
 
     const LoadMore = () => {
-        location.reload();
+
+        if(loadCoins === 0) {
+            setLoadCoins(10);
+            return;
+
+        }
+
         setLoadCoins(loadCoins + 10);
         
     }
@@ -121,7 +128,7 @@ function Home() {
             </form>
 
            
-            <table>
+            <table className={home.table}>
                     <thead>
                     <tr>
                         <th scope='col'> Moeda </th>

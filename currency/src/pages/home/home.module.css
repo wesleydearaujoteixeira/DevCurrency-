@@ -103,6 +103,10 @@ table > th, td {
     z-index: 99;
 }
 
+.table {
+    overflow-y:scroll;
+}
+
 
 
 
